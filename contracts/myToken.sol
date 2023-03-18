@@ -6,7 +6,7 @@ contract myToken{
     string public name = "Pelumi's Token";
     string public symbol = "PT";
 
-    uint2566 public totalSupply = 4000000;
+    uint256 public totalSupply = 4000000;
 
     address public owner;
     mapping(address => uint256)  balances;
@@ -14,7 +14,10 @@ contract myToken{
 
 
     constructor(address, newOwner){
-        balances[msgsender] = totalSupply;
+        balances[msg.sender] = totalSupply;
         owner = newOwner;
+    }
+    function transfer(address to, uint256 amount) external {
+        
     }
 }
