@@ -15,9 +15,22 @@ contract myToken{
 
     constructor(address, newOwner){
         balances[msg.sender] = totalSupply;
-        owner = newOwner;
+        newOwner = msg.sender;
     }
     function transfer(address to, uint256 amount) external {
-        
+        require(balances[msg.sender] >= amount, "Not enough tokens");
+        require(msg.sender != address(0), "Invalid token address");
+        require(to != address(0), "Invalid token address");
+
+        balances[msg.sender] -= amount;
+        balances[to] += amount;
+
+        emit Transfer(msg.sender, to, amount);
+
     }
+
+    function balanceOf(address account) external view returns (uint256){
+        return balances[account];
+    }
+    
 }
