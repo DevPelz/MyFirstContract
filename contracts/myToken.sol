@@ -13,7 +13,7 @@ contract myToken{
     event Transfer(address indexed _from, address indexed _to, uint256 _value);
 
 
-    constructor(address, newOwner){
+    constructor(address newOwner){
         balances[msg.sender] = totalSupply;
         newOwner = msg.sender;
     }
@@ -32,5 +32,5 @@ contract myToken{
     function balanceOf(address account) external view returns (uint256){
         return balances[account];
     }
-    
+
 }
