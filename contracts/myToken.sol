@@ -7,4 +7,7 @@ contract myToken{
     string public symbol = "PT";
 
     uint2566 public totalSupply = 4000000;
+
+    address public owner;
+    mapping(address => uint256)  balances;
 }
